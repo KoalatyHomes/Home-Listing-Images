@@ -1,0 +1,103 @@
+/* MODAL */
+
+.modal {
+  height: calc(100vh - 96px);
+  width: calc(100vw - 96px);
+  margin: 48px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  position: absolute;
+  overflow: hidden;
+}
+
+.modalHeader {
+  margin: 16px 16px 16px 16px;
+}
+
+.modalHeader span {
+  font-family: sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.33;
+}
+
+.modalButtons {
+  display: inline-block;
+  float: right;
+}
+
+.modalBody {
+  border-top: 1px solid rgb(205,209,212);
+  height: 100%;
+  overflow: hidden;
+}
+
+.gallery {
+  display: inline-block;
+  width: calc(100% - 342px);
+  overflow: scroll;
+}
+
+.tourscheduleContainer {
+  margin-top: 16px;
+  float: right;
+  display: inline-block;
+  width: 342px;
+}
+
+.close {
+  height: 24px;
+  width: 24px;
+  vertical-align: middle;
+  fill: black;
+}
+
+.close:hover {
+  fill: #007881;
+  cursor: pointer;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cycleButton {
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  background-color: rgb(59, 65, 68);
+  transition: box-shadow 0.1s ease 0s, color 0.1s ease 0s, border-color 0.2s ease 0s, background-color 0.2s ease 0s;
+  border-radius: 24px;
+  padding: 1px;
+  border: none;
+  outline: none;
+}
+
+.cycleButton:hover {
+  background-color: rgb(134, 144, 153);
+}
+
+.arrowSvg {
+  height: 24px;
+  width: 24px;
+}
+
+.leftCycle {
+  z-index: 4;
+  position: absolute;
+  top: calc(50% - 12px);
+  left: 20px;
+  right: auto;
+}
+
+.rightCycle {
+  z-index: 4;
+  position: absolute;
+  top: calc(50% - 12px);
+  left: auto;
+  right: 370px;
+}

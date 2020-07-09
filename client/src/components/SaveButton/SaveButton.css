@@ -1,0 +1,56 @@
+.btnDiv {
+  z-index: 2;
+  margin: 8px;
+  right: 0px;
+  display: inline;
+  /* position: absolute; */
+}
+
+.headerbtn {
+  border-radius: 8px;
+  background-color: white;
+  color: black;
+  padding: 8px 16px;
+  border: none;
+  outline: none;
+}
+
+.headerbtn:hover {
+  cursor: pointer;
+  color: rgb(59, 65, 68);
+  background-color: rgb(232, 233, 234);
+}
+
+.headerbtn:active {
+  color: rgb(255, 255, 255);
+  background-color: rgb(134, 144, 153);
+}
+
+.headerbtn:active > .headerSvg {
+  fill: rgb(255, 255, 255);
+}
+
+.headerSvg {
+  /* display: inline; */
+  height: 24px;
+  width: 24px;
+  vertical-align: middle;
+  fill: #007881;
+}
+
+.heartOn {
+  fill: red;
+}
+
+.shareBtn {
+  margin-left: 16px;
+}
+
+.btnText {
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline;
+  margin-left: 8px;
+  vertical-align: middle;
+}

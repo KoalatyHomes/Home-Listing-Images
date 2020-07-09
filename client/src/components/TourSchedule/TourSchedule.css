@@ -1,0 +1,172 @@
+/* TOUR SCHEDULE */
+
+/* #TourComponent {
+  margin-top: 24px;
+} */
+
+.TourTab {
+  font-family: sans-serif;
+  padding: 8px 16px;
+  width: 50%;
+  color: rgb(0, 120, 130);
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  background-color: white;
+  border: 1px solid rgb(232, 233, 234);
+  border-radius: 8px;
+  outline: none;
+}
+
+.formdiv {
+  padding: 16px;
+  border-radius: 0px 8px 8px;
+  border: 1px solid rgb(232, 233, 234);
+  display: flexbox;
+  position: relative;
+}
+
+.tabOn {
+  border-bottom: 1px solid transparent;
+}
+
+.tabOff {
+  border: 1px solid transparent;
+}
+
+.inPerson {
+  border-radius: 8px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-right: 0px;
+}
+
+.virtual {
+  border-radius: 8px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-left: 0px;
+}
+
+.typeRadio {
+  font-family: sans-serif;
+  width: 50%;
+  border: 1px solid rgb(232, 233, 234);
+  margin: 4px 0px;
+  outline: none;
+  font-size: 16px;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor:pointer
+}
+
+.TourTypeOn {
+  color: white;
+  background-color: rgb(0, 120, 130);
+}
+
+.TourTypeOff {
+  color: black;
+  background-color: white;
+}
+
+.TourTypeOff:hover {
+  background-color: rgb(232, 233, 234);
+}
+
+.TourTypeOff:active {
+  color: rgb(255, 255, 255);
+  background-color: rgb(134, 144, 153);
+}
+
+.text {
+  font-family: sans-serif;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid rgb(232, 233, 234);
+  height: 36px;
+  outline: none;
+  padding: 8px;
+  margin: 4px 0px;
+}
+
+.text:focus {
+  box-shadow: rgb(0, 120, 130) 0px 0px 0px 2px;
+  border-color: rgb(0, 173, 187);
+}
+
+.input50 {
+  width: calc(50% - 22px);
+  display: inline-block;
+}
+
+.right {
+  margin-left: 8px;
+}
+
+.input100 {
+  width: calc(100% - 9px);
+}
+
+.checkboxDiv {
+
+}
+
+.checkbox {
+  margin: 4px;
+  cursor: pointer;
+  color: rgb(0, 120, 130);
+}
+
+.checkboxLabel {
+  cursor: pointer;
+  font-family: sans-serif;
+  color: rgb(134, 144, 153);
+  font-size: 12px;
+  line-height: 1.33;
+  vertical-align: middle;
+}
+
+.schedule {
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
+  background-color: rgb(217, 60, 35);
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid rgb(217, 60, 35);
+  padding: 8px 16px;
+  cursor: pointer;
+  margin: 8px 0px;
+  transition: top 0.1s ease 0s, box-shadow 0.1s ease 0s, border-color 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s;
+}
+
+.schedule:hover {
+  color: rgb(217, 60, 35);
+  background-color: white;
+  transition: top 0.1s ease 0s, box-shadow 0.1s ease 0s, border-color 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s;
+}
+
+.textarea {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  resize: none;
+  width: calc(100% - 9px);
+  height: 78px;
+  display: block;
+  border-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(205, 209, 212);
+  border-image: initial;
+  padding: 8px;
+  outline: none;
+  transition: box-shadow 0.15s ease 0s, border-color 0.15s ease 0s;
+}
+
+.disclaimer {
+  color: rgb(134, 144, 153);
+  font-size: 10px;
+  line-height: 1.6;
+}

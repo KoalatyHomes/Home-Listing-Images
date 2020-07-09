@@ -1,0 +1,101 @@
+.Calendar {
+  position: relative;
+}
+
+.calendarDiv {
+  margin: 4px 4px 4px 0px;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.calendarBox {
+  transform: translateX(0%);
+  transition-duration: .75s;
+}
+
+.calendarScrolled {
+  transform: translateX(-100%);
+  transition-duration: .75s;
+}
+
+.pageButtonRight {
+  position: absolute;
+  right: -16px;
+  top: calc(50% - 16px);
+  align-items: center;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  background-color: white;
+  padding: 1px;
+  border: 1px solid rgb(232, 233, 234);
+  border-radius: 24px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.pageButtonLeft {
+  z-index: 1;
+  position: absolute;
+  left: -16px;
+  top: calc(50% - 16px);
+  align-items: center;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  background-color: white;
+  padding: 1px;
+  border: 1px solid rgb(232, 233, 234);
+  border-radius: 24px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.pageButton:hover {
+  box-shadow: rgba(134, 144, 153, 0.18) 0px 8px 16px 0px, rgba(59, 65, 68, 0.05) 0px 2px 4px;
+  outline: none;
+  border-color: transparent;
+}
+
+.arrowSvg {
+  z-index: 2;
+}
+
+.calendarElement {
+  display: inline-block;
+  margin: 8px 4px;
+  width: calc(25% - 8px);
+}
+
+.calendarButton {
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  background-color: white;
+  /* box-shadow: rgb(0, 173, 187) 0px 0px 0px 2px; */
+  border-radius: 8px;
+  transition: top 0.1s ease 0s, box-shadow 0.1s ease 0s, border-color 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s;
+  padding: 8px;
+  border: 2px solid transparent;
+  outline: none;
+}
+
+.ButtonOff {
+  box-shadow: rgb(205, 209, 212) 0px 0px 0px 1px;
+}
+
+.ButtonOn {
+  box-shadow: rgb(0, 173, 187) 0px 0px 0px 2px;
+}
+
+.calendarButton:hover {
+  background-color: rgb(245, 246, 247);
+}
+
+.calendarDate {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1.2;
+}
