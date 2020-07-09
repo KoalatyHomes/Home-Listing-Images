@@ -19,8 +19,8 @@ app.use(morgan('dev'));
 
 // Read / GET
 app.get('/api/listings/:id', (req, res) => {
-  const id = req.params.homeId || '5f06b469fd0850cef70edc02';
-  // console.log('get', req.params.homeId);
+  const id = req.params.id || '5f06b469fd0850cef70edc02';
+  // console.log('get', req.params.id);
   db.Tour.find({ _id: id })
     .then((results) => {
       res.status(200).send(results);
@@ -62,7 +62,7 @@ app.post('/api/listings', (req, res) => {
 // Update / PUT
 app.put('/api/listings/:id', (req, res) => {
   const id = req.params._id;
-  console.log('PUT id', id);
+  // console.log('PUT id', id);
   const listing = {
     Address: req.body.Address,
     Price: req.body.Price,
@@ -82,7 +82,7 @@ app.put('/api/listings/:id', (req, res) => {
 // Delete / DELETE
 app.delete('/api/listings/:id', (req, res) => {
   const id = req.query._id;
-  console.log(id);
+  // console.log(id);
   db.Tour.findOneAndDelete(id)
     .then((results) => {
       res.status(200).send(results);
