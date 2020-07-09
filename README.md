@@ -1,49 +1,67 @@
-# Project Name
+## Tour Scheduler API
 
-> Front-End focused project, modeling Trulia.com
+### Get listing info
+  * GET `/api/listings/:id`
 
-## Related Projects
+**Path Parameters:**
+  * `id` listing id
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+**Success Status Code:** `200`
 
-## Table of Contents
+**Returns:** JSON
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-
-## Usage
-
-> Webpack compile: 'webpack -d --watch'
-```sh
-npm run react-dev'
-```
-> Start Server: 'nodemon server/index.js'
-```sh
-npm run start'
-```
-> Seed DB: 'node database/seed.js
-```sh
-npm run db:seed
+```json
+    {
+      "Address": "String",
+      "Price": "Number",
+      "MainImg": "String",
+      "Gallery": ["String"],
+      "GalleryCount": "Number",
+    }
 ```
 
-## Requirements
+### Add listing
+  * POST `/api/listings`
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
+**Success Status Code:** `201`
 
-- Node 6.13.0
-- etc
+**Request Body**: Expects JSON with the following keys.
 
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-npm install -g webpack
-npm install
+```json
+    {
+      "Address": "String",
+      "Price": "Number",
+      "MainImg": "String",
+      "Gallery": ["String"],
+      "GalleryCount": "Number",
+    }
 ```
+
+
+### Update listing info
+  * PUT `/api/listings/:id`
+
+**Path Parameters:**
+  * `id` listing id
+
+**Success Status Code:** `204`
+
+**Request Body**: Expects JSON with the following keys.
+
+```json
+    {
+      "Address": "String",
+      "Price": "Number",
+      "MainImg": "String",
+      "Gallery": ["String"],
+      "GalleryCount": "Number",
+    }
+```
+
+### Delete listing
+  * DELETE `/api/listing/:id`
+
+**Path Parameters:**
+  * `id` listing id
+
+**Success Status Code:** `204`
