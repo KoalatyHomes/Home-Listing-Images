@@ -1,7 +1,7 @@
-## Tour Scheduler API
+## Photos API
 
 ### Get listing info
-  * GET `/api/listings/:id`
+  * GET `/api/listings/:id/`
 
 **Path Parameters:**
   * `id` listing id
@@ -12,16 +12,20 @@
 
 ```json
     {
-      "Address": "String",
-      "Price": "Number",
-      "MainImg": "String",
-      "Gallery": ["String"],
-      "GalleryCount": "Number",
+      "id": "Number",
+      "address": "String",
+      "city": "String",
+      "state": "String",
+      "zip_code": "Number",
+      "gallery": ["StringUrl",...]
     }
 ```
 
 ### Add listing
-  * POST `/api/listings`
+  * POST `/api/listings/:id/photos`
+
+  **Path Parameters**
+    * `:id` listing id
 
 **Success Status Code:** `201`
 
@@ -29,11 +33,7 @@
 
 ```json
     {
-      "Address": "String",
-      "Price": "Number",
-      "MainImg": "String",
-      "Gallery": ["String"],
-      "GalleryCount": "Number",
+      "photo_url": "String"
     }
 ```
 
@@ -50,18 +50,19 @@
 
 ```json
     {
-      "Address": "String",
-      "Price": "Number",
-      "MainImg": "String",
-      "Gallery": ["String"],
-      "GalleryCount": "Number",
+      "id": "Number",
+      "address": "String",
+      "city": "String",
+      "state": "String",
+      "zip_code": "Number"
     }
 ```
 
 ### Delete listing
-  * DELETE `/api/listing/:id`
+  * DELETE `/api/listing/:id/photos/:photoId`
 
 **Path Parameters:**
   * `id` listing id
+  * `photoId` photo id
 
 **Success Status Code:** `204`

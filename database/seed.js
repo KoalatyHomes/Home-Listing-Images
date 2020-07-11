@@ -1,4 +1,3 @@
-// const mongoose = require('mongoose');
 const faker = require('faker');
 const db = require('./TourSchedule.js');
 const mongoose = require('mongoose');
