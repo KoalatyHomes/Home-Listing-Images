@@ -9,7 +9,7 @@ CREATE TABLE listings (
   city VARCHAR(20) NOT NULL,
   state VARCHAR(2) NOT NULL,
   zip_code INT NOT NULL,
-  main_image_id INT NOT NULL,
+  price INT NOT NULL,
   realtor_id INT,
   FOREIGN KEY (realtor_id) REFERENCES realtors (realtor_id)
 )
