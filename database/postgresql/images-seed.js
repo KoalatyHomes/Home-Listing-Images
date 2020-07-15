@@ -15,7 +15,7 @@ const imagesDataGen = (writer, encoding, callback) => {
       image_id++;
       const image_url = `https://listingphotos1.s3-us-west-1.amazonaws.com/photo${photoNum()}.jpg`
       const listing_id = faker.random.number({min: 1, max: 10000000});
-      const data = `${image_id}, ${image_url}, ${listing_id}\n`
+      const data = `${image_id},${image_url},${listing_id}\n`
       if (i === 0) {
         writeImages.write(data, encoding, callback);
       } else {

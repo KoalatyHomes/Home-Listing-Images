@@ -19,10 +19,10 @@ const listingsDataGen = (writer, encoding, callback) => {
       const address = faker.address.streetAddress();
       const city = faker.address.city();
       const state = faker.address.stateAbbr();
-      const zip_code = faker.address.zipCode();
+      const zip_code = faker.address.zipCode('#####');
       const price = faker.random.number({min: 1000, max: 7000}) * 1000;
       const realtor_id = faker.random.number({min: 1, max: 10000000});
-      const data = `${id}, ${address}, ${city}, ${state}, ${zip_code}, ${price}, ${realtor_id}\n`
+      const data = `${id},${address},${city},${state},${zip_code},${price},${realtor_id}\n`
       if (i === 0) {
         writeListings.write(data, encoding, callback);
       } else {

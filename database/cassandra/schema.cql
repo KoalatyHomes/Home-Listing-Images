@@ -11,7 +11,7 @@ CREATE TABLE images_by_listing (
   address text,
   city text,
   state text,
-  zip_code int,
+  zip_code int(5),
   price int,
   image_url text,
   display_order int,
