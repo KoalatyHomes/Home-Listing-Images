@@ -83,11 +83,8 @@ const realtorsDataGen = (writer, encoding, callback) => {
 }
 
 listingsDataGen(writeListings, 'utf8', () => {writeListings.end()});
-console.log('listings generated');
 imagesDataGen(writeImages, 'utf8', () => {writeImages.end()});
-console.log('images generated');
 realtorsDataGen(writeRealtors, 'utf8', () => {writeRealtors.end()});
-console.log('realtors generated');
 
 // const listingsWriter = csvWriter();
 // const listingsDataGen = () => {
