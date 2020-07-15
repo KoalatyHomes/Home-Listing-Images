@@ -6,3 +6,12 @@ node_modules
 
 ./client/dist/images
 images
+
+# csv files
+*.csv
+./database/postgresql/images.csv
+./database/postgresql/listings.csv
+./database/postgresql/realtors.csv
+
+./database/postgresql/test.js
+
