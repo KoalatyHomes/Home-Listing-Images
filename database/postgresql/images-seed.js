@@ -3,6 +3,7 @@ const csvWriter = require('csv-write-stream');
 const faker = require('faker');
 
 const writeImages = fs.createWriteStream('./database/postgresql/images1.csv');
+writeImages.write('image_id,image_url,listing_id\n', 'utf8');
 const imagesDataGen = (writer, encoding, callback) => {
   let i = 80000000;
   let image_id = 0;
