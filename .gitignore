@@ -20,3 +20,5 @@ mongodb
 # coverage
 coverage
 coverage1
+
+*/postgresql/index.js
