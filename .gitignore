@@ -10,3 +10,5 @@ images
 # csv files
 *.csv
 
+# mongodb
+mongodb
