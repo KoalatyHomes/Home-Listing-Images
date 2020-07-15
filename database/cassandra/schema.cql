@@ -3,7 +3,7 @@ CREATE KEYSPACE IF NOT EXISTS home_listings with REPLICATION = {
   'replication_factor': 1
 }
 
-CREATE TABLE photos_by_listing (
+CREATE TABLE images_by_listing (
   id UUID,
   listing_id int,
   address text,
