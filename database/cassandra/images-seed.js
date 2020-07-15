@@ -3,11 +3,11 @@ const csvWriter = require('csv-write-stream');
 const faker = require('faker');
 
 const writeImages = fs.createWriteStream('./database/cassandra/images-cassandra.csv');
-writeImages.write('id,image_id,listing_id,address,city,state,zip_code,price,image_url,display_order\n', 'utf8');
+writeImages.write('image_id,listing_id,address,city,state,zip_code,price,image_url,display_order\n', 'utf8');
 
 const imagesDataGen = (writer, encoding, callback) => {
-  let i = 100;
-  let id = 1;
+  let i = 1000000;
+  let id = 0;
   const photoNum = () => faker.random.number({min: 1, max: 35});
   const randomNum = () => faker.random.number({min: 8, max: 11});
   function write() {
@@ -18,8 +18,9 @@ const imagesDataGen = (writer, encoding, callback) => {
       let totalPhotos = randomNum();
       do {
         j++;
-        const image_id = id++;
-        const listing_id = i;
+        id++;
+        const image_id = id;
+        const listing_id = i + 1;
         const address = faker.address.streetAddress();
         const city = faker.address.city();
         const state = faker.address.stateAbbr();
