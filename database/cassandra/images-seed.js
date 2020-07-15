@@ -7,14 +7,17 @@ writeImages.write('id,image_id,listing_id,address,city,state,zip_code,price,imag
 
 const imagesDataGen = (writer, encoding, callback) => {
   let i = 100;
-  let id = 0;
-  let j = 1
+  let id = 1;
   const photoNum = () => faker.random.number({min: 1, max: 35});
+  const randomNum = () => faker.random.number({min: 8, max: 11});
   function write() {
     let ok = true;
     do {
       i--;
-      while (j < 11) {
+      let j = 1
+      let totalPhotos = randomNum();
+      do {
+        j++;
         const image_id = id++;
         const listing_id = i;
         const address = faker.address.streetAddress();
@@ -23,16 +26,16 @@ const imagesDataGen = (writer, encoding, callback) => {
         const zip_code = faker.address.zipCode();
         const price = faker.random.number({min: 1000, max: 7000}) * 1000;
         const image_url = `https://listingphotos1.s3-us-west-1.amazonaws.com/photo${photoNum()}.jpg`;
-        const display_order = j;
+        const display_order = j - 1;
         const data = `${image_id}, ${listing_id}, ${address}, ${city}, ${state}, ${zip_code}, ${price}, ${image_url}, ${display_order}\n`
         if (i === 0) {
           writeImages.write(data, encoding, callback);
         } else {
           ok = writeImages.write(data, encoding);
         }
-        j++;
-      }
+      } while (j < totalPhotos);
     } while (i > 0 && ok);
+
     if (i > 0) {
       writeImages.once('drain', write);
     }
