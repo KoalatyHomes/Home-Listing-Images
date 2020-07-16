@@ -21,4 +21,5 @@ mongodb
 coverage
 coverage1
 
-*/postgresql/index.js
+# postgresql login
+config
