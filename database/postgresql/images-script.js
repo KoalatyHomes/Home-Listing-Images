@@ -3,7 +3,7 @@ const csvWriter = require('csv-write-stream');
 const faker = require('faker');
 
 const writeImages = fs.createWriteStream('./database/postgresql/images1.csv');
-writeImages.write('image_id,image_url,listing_id,display_order\n', 'utf8');
+writeImages.write('image_id,image_url,listing_id,display_order\n', 'utf-8');
 const imagesDataGen = (writer, encoding, callback) => {
   // let targetNumRecords = 50000000;
   let listing_id = 1;
@@ -16,10 +16,9 @@ const imagesDataGen = (writer, encoding, callback) => {
     while (listing_id <= 10000000 && ok) {
       let photoCounter = 1;
       let totalPhotos = randomNum();
-      // listing_id++;
       while (photoCounter <= totalPhotos) {
         image_id++;
-        const image_url = `https://sdc2.s3-us-west-1.amazonaws.com/photo${photoIndex()}.jpg`;
+        const image_url = `https://sdc4.s3-us-west-1.amazonaws.com/p${photoIndex()}.jpg`;
         const display_order = photoCounter;
         const data = `${image_id},${image_url},${listing_id},${display_order}\n`;
         if (listing_id === 10000000) {
