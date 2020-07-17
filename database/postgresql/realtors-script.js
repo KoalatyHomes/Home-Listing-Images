@@ -15,9 +15,9 @@ const realtorsDataGen = (writer, encoding, callback) => {
       const lastName = faker.name.lastName();
       const data = `${realtor_id},${firstName},${lastName}\n`;
       if (numRecords === 0) {
-        writeRealtors.write(data, encoding, callback);
+        writer.write(data, encoding, callback);
       } else {
-        ok = writeRealtors.write(data, encoding);
+        ok = writer.write(data, encoding);
       }
       numRecords--;
     }
