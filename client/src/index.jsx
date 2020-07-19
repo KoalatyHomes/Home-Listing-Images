@@ -17,18 +17,25 @@ class App extends React.Component {
         GalleryCount: 0,
       },
     };
-
     this.toggleModal = this.toggleModal.bind(this);
   }
 
-  componentDidMount() {
-    axios.get('api/listings')
+  getData() {
+    const listing_id = `${window.location.pathname.slice(1)}` || '1';
+    axios.get(`api/listings/${listing_id}`)
       .then((results) => {
-        this.setState({ home: results.data[Math.floor(Math.random() * 100)] });
-      });
+        this.setState({ home: results.data });
+        console.log('RESULTS:', results.data);
+      }
+    );
+  }
+
+  componentDidMount() {
+    this.getData();
   }
 
   toggleModal() {
+    console.log('toggle modal')
     this.setState((prevState) => ({ modal: !prevState.modal }));
   }
 
