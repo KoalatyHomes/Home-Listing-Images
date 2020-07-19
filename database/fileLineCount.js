@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function countFileLines(filePath){
+const countFileLines = (filePath) => {
   return new Promise((resolve, reject) => {
   let lineCount = 0;
   fs.createReadStream(filePath)
@@ -17,7 +17,7 @@ function countFileLines(filePath){
   });
 };
 
-countFileLines('./postgresql/listings1.csv');
-countFileLines('./postgresql/realtors1.csv');
-countFileLines('./postgresql/images1.csv');
-countFileLines('./cassandra/images-cassandra.csv');
+countFileLines('./database/postgresql/listings1.csv');
+countFileLines('./database/postgresql/realtors1.csv');
+countFileLines('./database/postgresql/images1.csv');
+countFileLines('./database/cassandra/images-cql1.csv');
