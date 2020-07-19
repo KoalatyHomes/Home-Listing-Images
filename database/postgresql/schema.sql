@@ -28,7 +28,7 @@ CREATE TABLE images (
   image_url TEXT NOT NULL,
   listing_id INT,
   display_order INT,
-  FOREIGN KEY (listing_id) REFERENCES listings (id)
+  FOREIGN KEY (listing_id) REFERENCES listings (id) ON DELETE CASCADE
 );
 
 COPY realtors (realtor_id, firstName, lastName) FROM '/Users/emho/Documents/HackReactor/sdc-photos/database/postgresql/realtors1.csv' delimiter ',' csv header;
