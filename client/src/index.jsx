@@ -30,7 +30,6 @@ class App extends React.Component {
           home: results.data
         });
         console.log('RESULTS:', results.data);
-        console.log('state', this.state.home);
       }
     );
   }
