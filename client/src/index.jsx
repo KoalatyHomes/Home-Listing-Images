@@ -13,6 +13,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       modal: false,
+      isLoaded: false,
       home: {
         GalleryCount: 0,
       },
@@ -24,8 +25,12 @@ class App extends React.Component {
     const listing_id = `${window.location.pathname.slice(1)}` || '1';
     axios.get(`api/listings/${listing_id}`)
       .then((results) => {
-        this.setState({ home: results.data });
+        this.setState({
+          isLoaded: true,
+          home: results.data
+        });
         console.log('RESULTS:', results.data);
+        console.log('state', this.state.home);
       }
     );
   }
@@ -35,7 +40,6 @@ class App extends React.Component {
   }
 
   toggleModal() {
-    console.log('toggle modal')
     this.setState((prevState) => ({ modal: !prevState.modal }));
   }
 
@@ -58,19 +62,24 @@ class App extends React.Component {
         </div>
       );
     }
-    return (
-      <div className={styles.centerCol}>
-        <MainViewer toggleModal={this.toggleModal} home={this.state.home} />
-        <div className={styles.wideDiv}>
-          <div className={styles.description}>
-            <img className={styles.descImg} src="https://homeimages-samm1337.s3-us-west-1.amazonaws.com/description.png" alt=""></img>
-          </div>
-          <div className={styles.tourbox}>
-            <TourSchedule home={this.state.home} />
+    const { isLoaded, home } = this.state;
+    if (!isLoaded) {
+      return <div>Loading...</div>
+    } else {
+      return (
+        <div className={styles.centerCol}>
+          <MainViewer toggleModal={this.toggleModal} home={this.state.home} />
+          <div className={styles.wideDiv}>
+            <div className={styles.description}>
+              <img className={styles.descImg} src="https://homeimages-samm1337.s3-us-west-1.amazonaws.com/description.png" alt=""></img>
+            </div>
+            <div className={styles.tourbox}>
+              <TourSchedule home={this.state.home} />
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
