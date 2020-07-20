@@ -1,8 +1,9 @@
+const newrelic = require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const morgan = require('morgan');
-const db = require('../database/mongodb/TourSchedule.js');
+// const db = require('../database/mongodb/TourSchedule.js');
 const client = require('../database/postgresql/index.js');
 
 const port = 3001;
@@ -15,7 +16,8 @@ app.use((req, res, next) => {
 });
 
 app.use(express.static(path.join(__dirname, '/../client/dist')));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(morgan('dev'));
 
 // USING PSQL
@@ -23,12 +25,26 @@ app.use(morgan('dev'));
 // GET request
 app.get('/api/listings/:id', (req, res) => {
   const id = req.params.id || '1';
-  console.log('app.get-listing_id', req.params.id);
-  const queryStr1 = `SELECT listings.id, listings.address, listings.city, listings.state, listings.zip_code, listings.price, images.image_id, images.image_url, images.display_order, realtors.firstName, realtors.lastName FROM listings INNER JOIN images ON listings.id = images.listing_id INNER JOIN realtors ON listings.realtor_id = realtors.realtor_id WHERE listings.id = ${id} ORDER BY display_order`;
-  client.query(queryStr1)
+  // console.log('app.get-listing_id', req.params.id);
+  const queryStr = `SELECT listings.id, listings.address, listings.city, listings.state, listings.zip_code, listings.price, images.image_id, images.image_url, images.display_order, realtors.firstName, realtors.lastName FROM listings INNER JOIN images ON listings.id = images.listing_id INNER JOIN realtors ON listings.realtor_id = realtors.realtor_id WHERE listings.id = ${id} ORDER BY display_order`;
+  client.query(queryStr)
     .then((result) => res.status(200).send(result))
     .catch((err) => res.status(404).send(err))
-})
+});
+
+// POST request
+app.post('/api/listings/:id/photos', (req, res) => {
+  const id = req.params.id;
+  const image = req.body.image_url;
+  const queryStr = `INSERT INTO images (image_url, listing_id, display_order) VALUES ('${image}', ${id}, (SELECT MAX(display_order)+1 FROM images WHERE listing_id = 9900001))`;
+  client.query(queryStr)
+  .then((result) => res.status(200).send(result))
+  .catch((err) => res.status(404).send(err))
+});
+
+app.get('/:listing_id', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
 
 app.listen(port, () => {
   console.log('Server is listening on port: ', port);
@@ -62,7 +78,7 @@ app.listen(port, () => {
 // });
 
 // // Create / POST
-// app.post('/api/listings', (req, res) => {
+// app.post('/api/listings/:id/photos', (req, res) => {
 //   const listing = {
 //     Address: req.body.Address,
 //     Price: req.body.Price,
@@ -80,7 +96,7 @@ app.listen(port, () => {
 // });
 
 // // Update / PUT
-// app.put('/api/listings/:id', (req, res) => {
+// app.put('/api/listings/:id/photos', (req, res) => {
 //   const id = req.params._id;
 //   // console.log('PUT id', id);
 //   const listing = {
