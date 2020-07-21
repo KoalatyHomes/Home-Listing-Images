@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import React from 'react';
 import svgPath from '../../utils/svgPaths';
 import TourSchedule from '../TourSchedule/TourSchedule.jsx';
@@ -19,7 +18,7 @@ class Modal extends React.Component {
     super(props);
     this.state = {
       image: 0,
-      gallery: this.props.home.Gallery,
+      gallery: this.props.home.rows.map(image => image.image_url),
     };
 
     this.cycleLeft = this.cycleLeft.bind(this);
@@ -27,7 +26,7 @@ class Modal extends React.Component {
   }
 
   cycleRight() {
-    if (this.state.image === this.props.home.GalleryCount) {
+    if (this.state.image === this.props.home.rowCount) {
       this.setState({ image: 0 });
     } else {
       this.setState((prevState) => ({ image: prevState.image + 1 }));
@@ -36,21 +35,22 @@ class Modal extends React.Component {
 
   cycleLeft() {
     if (this.state.image === 0) {
-      this.setState({ image: this.props.home.GalleryCount });
+      this.setState({ image: this.props.home.rowCount });
     } else {
       this.setState((prevState) => ({ image: prevState.image - 1 }));
     }
   }
 
   render() {
+
     return (
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
           <span>
-            {`${this.props.home.Address} `}
+            {`${this.props.home.rows[0].address} `}
           </span>
           <span>
-            | {formatPrice(JSON.stringify(this.props.home.Price))}
+            | {formatPrice(JSON.stringify(this.props.home.rows[0].price))}
           </span>
           <span> | 5 Bed 5 Bath</span>
           <div className={styles.modalButtons}>

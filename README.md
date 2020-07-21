@@ -1,4 +1,4 @@
-## Photos API
+## Home Listing Images API
 
 ### Get listing info
   * GET `/api/listings/:id/`
@@ -17,12 +17,14 @@
       "city": "String",
       "state": "String",
       "zip_code": "Number",
-      "gallery": ["StringUrl",...]
+      "gallery": ["StringUrl",...],
+      "realtor_firstName": "String",
+      "realtor_lastName": "String",
     }
 ```
 
 ### Add listing
-  * POST `/api/listings/:id/photos`
+  * POST `/api/listings/:id/images`
 
   **Path Parameters**
     * `:id` listing id
@@ -33,13 +35,12 @@
 
 ```json
     {
-      "photo_url": "String"
+      "image_url": "String"
     }
 ```
 
-
 ### Update listing info
-  * PUT `/api/listings/:id`
+  * PATCH `/api/listings/:id`
 
 **Path Parameters:**
   * `id` listing id
@@ -51,18 +52,15 @@
 ```json
     {
       "id": "Number",
-      "address": "String",
-      "city": "String",
-      "state": "String",
-      "zip_code": "Number"
+      "image_url": "String",
     }
 ```
 
 ### Delete listing
-  * DELETE `/api/listing/:id/photos/:photoId`
+  * DELETE `/api/listing/:id/images/:image_id`
 
 **Path Parameters:**
   * `id` listing id
-  * `photoId` photo id
+  * `image_id` image id
 
 **Success Status Code:** `204`

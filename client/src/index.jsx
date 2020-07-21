@@ -13,19 +13,28 @@ class App extends React.Component {
     super(props);
     this.state = {
       modal: false,
+      isLoaded: false,
       home: {
         GalleryCount: 0,
       },
     };
-
     this.toggleModal = this.toggleModal.bind(this);
   }
 
-  componentDidMount() {
-    axios.get('api/listings')
+  getData() {
+    const listing_id = `${window.location.pathname.slice(1)}` || '1';
+    axios.get(`api/listings/${listing_id}`)
       .then((results) => {
-        this.setState({ home: results.data[Math.floor(Math.random() * 100)] });
-      });
+        this.setState({
+          isLoaded: true,
+          home: results.data
+        });
+      }
+    );
+  }
+
+  componentDidMount() {
+    this.getData();
   }
 
   toggleModal() {
@@ -44,29 +53,33 @@ class App extends React.Component {
             <MainViewer home={this.state.home} />
             <div className={styles.wideDiv}>
               <div className={styles.tourbox}>
-                {/* <TourSchedule home={this.state.home} /> */}
               </div>
             </div>
           </div>
         </div>
       );
     }
-    return (
-      <div className={styles.centerCol}>
-        <MainViewer toggleModal={this.toggleModal} home={this.state.home} />
-        <div className={styles.wideDiv}>
-          <div className={styles.description}>
-            <img className={styles.descImg} src="https://homeimages-samm1337.s3-us-west-1.amazonaws.com/description.png" alt=""></img>
-          </div>
-          <div className={styles.tourbox}>
-            <TourSchedule home={this.state.home} />
+    const { isLoaded, home } = this.state;
+    if (!isLoaded) {
+      return <div>Loading...</div>
+    } else {
+      return (
+        <div className={styles.centerCol}>
+          <MainViewer toggleModal={this.toggleModal} home={this.state.home} />
+          <div className={styles.wideDiv}>
+            <div className={styles.description}>
+              <img className={styles.descImg} src="https://homeimages-samm1337.s3-us-west-1.amazonaws.com/description.png" alt=""></img>
+            </div>
+            <div className={styles.tourbox}>
+              <TourSchedule home={this.state.home} />
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
 export default App;
 
-ReactDOM.render(<App />, document.getElementById('TourSchedule'));
+ReactDOM.render(<App />, document.getElementById('HomeListingImages'));
