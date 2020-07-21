@@ -8,18 +8,21 @@ logs
 # Ignore node_modules folder
 node_modules
 
-./client/dist/images
-images
-
 # csv files
 *.csv
 
-# mongodb
+# databases
 mongodb
+cassandra
 
 # coverage
 coverage
 coverage1
 
+# test folder
+__tests__
+
 # postgresql login
 config
+
+newrelic.js
