@@ -30,12 +30,3 @@ CREATE TABLE images (
   display_order INT,
   FOREIGN KEY (listing_id) REFERENCES listings (id) ON DELETE CASCADE
 );
-
-COPY realtors (realtor_id, firstName, lastName) FROM '/Users/emho/Documents/HackReactor/sdc-photos/database/postgresql/realtors1.csv' delimiter ',' csv header;
-
-COPY listings (id, address, city, state, zip_code, price, realtor_id) FROM '/Users/emho/Documents/HackReactor/sdc-photos/database/postgresql/listings1.csv' delimiter ',' csv header;
-
-COPY images (image_id, image_url, listing_id, display_order) FROM '/Users/emho/Documents/HackReactor/sdc-photos/database/postgresql/images1.csv' delimiter ',' csv header;
-
-
-/* psql -d postgres -U newuser < database/postgresql/schema.sql */

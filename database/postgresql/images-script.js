@@ -5,7 +5,6 @@ const faker = require('faker');
 const writeImages = fs.createWriteStream('./database/postgresql/images1.csv');
 writeImages.write('image_id,image_url,listing_id,display_order\n', 'utf-8');
 const imagesDataGen = (writer, encoding, callback) => {
-  // let targetNumRecords = 50000000;
   let listing_id = 1;
   let image_id = 0;
   const photoIndex = () => faker.random.number({min: 1, max: 35});

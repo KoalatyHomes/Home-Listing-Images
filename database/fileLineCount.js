@@ -6,7 +6,7 @@ const countFileLines = (filePath) => {
   fs.createReadStream(filePath)
     .on("data", (buffer) => {
       let idx = -1;
-      lineCount--; // Because the loop will run once for idx=-1
+      lineCount--;
       do {
         idx = buffer.indexOf(10, idx+1);
         lineCount++;

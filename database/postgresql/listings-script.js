@@ -2,10 +2,8 @@ const fs = require('fs');
 const csvWriter = require('csv-write-stream');
 const faker = require('faker');
 
-// create stream and name file
 const writeListings = fs.createWriteStream('./database/postgresql/listings1.csv');
 
-// write headers for CSV file
 writeListings.write('id,address,city,state,zip_code,price,realtor_id\n', 'utf8');
 
 const listingsDataGen = (writer, encoding, callback) => {

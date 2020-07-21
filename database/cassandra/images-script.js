@@ -6,7 +6,6 @@ const writeImages = fs.createWriteStream('./database/cassandra/images-cql1.csv')
 writeImages.write('image_id,listing_id,address,city,state,zip_code,price,image_url,display_order\n','utf-8');
 
 const imagesDataGen = (writer, encoding, callback) => {
-  // let targetNumRecords = 50000000;
   let image_id = 0;
   let listing_id = 1;
   const photoIndex = () => faker.random.number({min: 1, max: 35});

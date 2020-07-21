@@ -5,7 +5,6 @@ import styles from './Calendar.css';
 
 const days = [];
 
-// formats dates from moment.js
 for (let i = 0; i <= 7; i++) {
   let obj = {};
   let format = moment().add(i, 'days').format('dddd Do MMMM');

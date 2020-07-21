@@ -9,19 +9,13 @@ const client = new Client ({
   database: 'home_listings',
 });
 
-client.connect()
-client
-  .query('SELECT NOW()')
-  .then(result => console.log('psql connected'))
-  .catch(e => console.error(e.stack))
-
-// client.connect(err => {
-//   if (err) {
-//     console.error('connection error', err.stack);
-//   } else {
-//     console.log('psql database connected!');
-//   }
-// });
+client.connect(err => {
+  if (err) {
+    console.error('connection error', err.stack);
+  } else {
+    console.log('psql database connected!');
+  }
+});
 
 module.exports = client;
 

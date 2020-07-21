@@ -26,3 +26,4 @@ __tests__
 config
 
 newrelic.js
+./server/script.js

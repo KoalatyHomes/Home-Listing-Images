@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import React from 'react';
 import svgPath from '../../utils/svgPaths';
 import TourSchedule from '../TourSchedule/TourSchedule.jsx';
