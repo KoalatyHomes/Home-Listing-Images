@@ -34,12 +34,27 @@ if (cluster.isMaster) {
       .catch((err) => res.status(404).send(err))
   });
 
-  app.post('/api/listings/:id/photos', (req, res) => {
-    const id = req.params.id;
-    const image = req.body.image_url;
-    const queryStr = `INSERT INTO images (image_url, listing_id, display_order) VALUES ('${image}', ${id}, (SELECT MAX(display_order)+1 FROM images WHERE listing_id = 9900001))`;
+  app.post('/api/listings/:id/images', (req, res) => {
+    const { id } = req.params;
+    const { image_url } = req.body;
+    const queryStr = `INSERT INTO images (image_url, listing_id, display_order) VALUES ('${image_url}', ${id}, (SELECT MAX(display_order)+1 FROM images WHERE listing_id = 9900001))`;
     client.query(queryStr)
+    .then((result) => res.status(204).send(result))
+    .catch((err) => res.status(404).send(err))
+  });
+
+  app.patch('/api/listings/:id/images/:image_id', (req, res) => {
+    const { id } = req.params;
+    const { image_url } = req.body;
+    const queryStr = `UPDATE images SET image_url = '${image_url}' WHERE image_id = ${id}`;
     .then((result) => res.status(201).send(result))
+    .catch((err) => res.status(404).send(err))
+  });
+
+  app.delete('/api/listings/:id/images/:image_id', (req, res) => {
+    const { id } = req.params;
+    const queryStr = `DELETE FROM images WHERE image_id = ${id}`;
+    .then((result) => res.status(204).send(result))
     .catch((err) => res.status(404).send(err))
   });
 
