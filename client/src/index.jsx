@@ -29,7 +29,6 @@ class App extends React.Component {
           isLoaded: true,
           home: results.data
         });
-        console.log('RESULTS:', results.data);
       }
     );
   }
