@@ -8,7 +8,8 @@
     "start": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
     "build": "webpack -p",
-    "db:seed": "node database/seed.js"
+    "db:seed": "node database/seed.js",
+    "prod": "webpack --mode production"
   },
   "dependencies": {
     "axios": "^0.19.2",
