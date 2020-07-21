@@ -1,9 +1,6 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
-// specify stages of your test (ramp up/down patterns) through the options object
-// target is the number of VUs you are aiming for
-
 export let options = {
   stages: [
     { duration: '30s', target: 10 },
