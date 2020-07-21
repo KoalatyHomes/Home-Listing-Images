@@ -15,7 +15,7 @@ export let options = {
 };
 
 export default function() {
-  const id = Math.floor(Math.random()) * (10000000 - 1) + 1;
+  const id = Math.floor(Math.random()) * (10000000) + 1;
   let res = http.get(`http://localhost:3001/api/listings/${id}`);
   sleep(1);
 
