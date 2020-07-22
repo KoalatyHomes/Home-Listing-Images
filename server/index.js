@@ -1,19 +1,19 @@
-// const newrelic = require('newrelic');
+const newrelic = require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const morgan = require('morgan');
 const client = require('../database/postgresql/index.js');
-const cluster = require('cluster');
-const numCPUs = require('os').cpus().length;
+// const cluster = require('cluster');
+// const numCPUs = require('os').cpus().length;
 
 const port = 3001;
 
-if (cluster.isMaster) {
-  for (var i = 0; i < numCPUs; i++) {
-    cluster.fork();
-  }
-} else {
+// if (cluster.isMaster) {
+//   for (var i = 0; i < numCPUs; i++) {
+//     cluster.fork();
+//   }
+// } else {
   const app = express();
 
   app.use((req, res, next) => {
@@ -47,15 +47,17 @@ if (cluster.isMaster) {
     const { id } = req.params;
     const { image_url } = req.body;
     const queryStr = `UPDATE images SET image_url = '${image_url}' WHERE image_id = ${id}`;
-    .then((result) => res.status(201).send(result))
-    .catch((err) => res.status(404).send(err))
+    client.query(queryStr)
+      .then((result) => res.status(201).send(result))
+      .catch((err) => res.status(404).send(err))
   });
 
   app.delete('/api/listings/:id/images/:image_id', (req, res) => {
     const { id } = req.params;
     const queryStr = `DELETE FROM images WHERE image_id = ${id}`;
-    .then((result) => res.status(204).send(result))
-    .catch((err) => res.status(404).send(err))
+    client.query(queryStr)
+      .then((result) => res.status(204).send(result))
+      .catch((err) => res.status(404).send(err))
   });
 
   app.get('/:listing_id', (req, res) => {
@@ -65,4 +67,4 @@ if (cluster.isMaster) {
   app.listen(port, () => {
     console.log('Server is listening on port: ', port);
   });
-}
+// }
