@@ -2,6 +2,7 @@ const { Client } = require('pg');
 const { psql_username, psql_password } = require('./config/psql.login.js');
 
 const client = new Client ({
+  // host: '54.153.112.42',
   host: 'localhost',
   port: 5432,
   username: psql_username,
