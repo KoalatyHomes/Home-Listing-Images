@@ -25,6 +25,6 @@ config
 newrelic.js
 loaderio*
 
-./server/script.js
-./database/fileLineCount.js
-images  
+/server/k6script.js
+/database/fileLineCount.js
+images
