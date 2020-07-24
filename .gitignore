@@ -26,4 +26,5 @@ __tests__
 config
 
 newrelic.js
+loaderio
 ./server/script.js
