@@ -1,14 +1,11 @@
 const { Client } = require('pg');
 const { psql_username, psql_password } = require('./config/psql.login.js');
 
-const client = new Client ({
-  host: '54.153.112.42',
-  // host: 'localhost',
-  port: 5432,
-  username: psql_username,
-  password: psql_password,
-  database: 'home_listings',
-});
+const host = '54.153.112.42:5432';
+const database = 'home_listings';
+
+const connectStr = `postgres://${psql_username}:${psql_password}@${host}/${database}`;
+const client = new Client(connectStr);
 
 client.connect(err => {
   if (err) {
