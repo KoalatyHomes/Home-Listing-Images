@@ -15,15 +15,16 @@ node_modules
 mongodb
 cassandra
 
-# coverage
-coverage
+# tests
 coverage1
-
-# test folder
 __tests__
 
 # postgresql login
 config
 
 newrelic.js
+loaderio*
+
 ./server/script.js
+./database/fileLineCount.js
+images  

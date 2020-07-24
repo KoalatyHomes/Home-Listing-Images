@@ -26,6 +26,8 @@ const port = 3001;
   app.use(express.urlencoded({ extended: true }));
   app.use(morgan('dev'));
 
+
+
   app.get('/api/listings/:id', (req, res) => {
     const id = req.params.id || '1';
     const queryStr = `SELECT listings.id, listings.address, listings.city, listings.state, listings.zip_code, listings.price, images.image_id, images.image_url, images.display_order, realtors.firstName, realtors.lastName FROM listings INNER JOIN images ON listings.id = images.listing_id INNER JOIN realtors ON listings.realtor_id = realtors.realtor_id WHERE listings.id = ${id} ORDER BY display_order`;
